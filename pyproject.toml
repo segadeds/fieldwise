@@ -1,0 +1,29 @@
+[project]
+name = "fieldwise"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Segun Adedipe", email = "segunadedipe93@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.5.4",
+    "plotly>=7.1.0",
+    "pydantic>=2.14.3",
+    "pyyaml>=6.0.3",
+    "streamlit>=1.67.0",
+]
+
+[project.scripts]
+fieldwise = "fieldwise:main"
+
+[build-system]
+requires = ["uv_build>=0.11.17,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.4",
+]
