@@ -1,9 +1,9 @@
 # Decisions
 
 ## D-001 Units
-- What units does FIELDWISE use, and why?
-- What standard conditions (pressure and temperature)?
-- What atmospheric pressure do you assume for psig → psia, and why is that an assumption?
+- oilfield units are used for this project: psi, °F, ft, bbl, STB/d, scf, cp.
+- standard pressure and temperature conditions for this project are     14.696psig and 60F ?
+- atmospheric pressure assumed for psig → psia is psia + 14.696
 
 ## D-002 Steady state first
 - Why build the field without time first, and only add time in Module 4?
