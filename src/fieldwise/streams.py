@@ -1,8 +1,10 @@
-from dataclasses import dataclass
 import math
+from dataclasses import dataclass
+
 from fieldwise import units
 
-# Frozen so a downstream unit can’t change a stream that another part of the field still uses.
+
+# Frozen so a downstream unit can't change a stream that another part of the field still uses.
 @dataclass(frozen=True)  
 class Stream:
     """Oil, water and gas flowing at one point in the field.

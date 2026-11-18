@@ -1,6 +1,8 @@
-import pytest
-import math
 import dataclasses
+import math
+
+import pytest
+
 from fieldwise.streams import Stream
 
 
