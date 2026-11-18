@@ -126,7 +126,7 @@ def api_to_sg(api_deg: float) -> float:
 
     sg = 141.5 / (api_deg + 131.5)
     """
-    # API gravity is typically in the range of 5–70 °API for crude oil. 
+    # API gravity is typically in the range of 5–70 °API for crude oil.
     # Values outside this range may indicate an error or an unusual substance.
     # So we stop with an error rather than return a silently wrong answer.
     if api_deg < 5 or api_deg > 70:
