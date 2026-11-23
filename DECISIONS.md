@@ -7,3 +7,6 @@
 
 ## D-002 Steady state first
 - Why build the field without time first, and only add time in Module 4?
+
+## D-004: 
+Field extended to 7 wells. W-7 is a sand-prone well. Because of this, the plan's "six wells" checks become "seven wells".

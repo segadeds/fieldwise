@@ -1,0 +1,82 @@
+# FIELDWISE: a FICTIONAL oil field.
+# Teaching values only. Not real data and not for design.
+# Units: oilfield units, with the unit in every key name.
+
+name: Fieldwise
+
+reservoir:
+  api_deg: 32               # medium-light oil (plan)
+  gor_scf_per_stb: 600      # solution GOR, Rs (plan)
+  p_res_psia: 4000          # average reservoir pressure at the datum depth (plan)
+  datum_tvd_ft: 9000        # depth where p_res_psia applies; 4000/9000 = 0.44 psi/ft, normal pressure
+  t_res_degf: 200           # (plan) fits ~80 degF surface + ~1.3 degF/100 ft x 9000 ft
+  gas_sg: 0.75              # typical associated gas (range 0.65-0.85, air = 1.0)
+
+# PI convention (assumption, see DECISIONS.md D-003):
+#   pi_stbd_per_psi is the MEASURED PI from a well test, so it already includes
+#   the effect of the current skin. Skin is stored separately so Module 2 can
+#   answer "how much would this well gain if the damage were removed?"
+#
+# Tubing IDs are standard sizes: 1.995 in = 2-3/8", 2.441 in = 2-7/8", 2.992 in = 3-1/2".
+
+wells:
+  - name: W-1               # THE STAR: best rock, clean completion, big tubing
+    tvd_ft: 8800
+    pi_stbd_per_psi: 3.5
+    skin: 0
+    tubing_id_in: 2.992
+    wc_frac: 0.05
+    gor_scf_per_stb: 600
+
+  - name: W-2               # THE AVERAGE WELL: a typical, unremarkable producer
+    tvd_ft: 9100
+    pi_stbd_per_psi: 2.0
+    skin: 2
+    tubing_id_in: 2.441
+    wc_frac: 0.10
+    gor_scf_per_stb: 600
+
+  - name: W-3               # THE DAMAGED WELL: decent rock but high skin, a stimulation candidate
+    tvd_ft: 9300
+    pi_stbd_per_psi: 1.2
+    skin: 8
+    tubing_id_in: 2.441
+    wc_frac: 0.05
+    gor_scf_per_stb: 600
+
+  - name: W-4               # THE EARLY WATER WELL: deepest, completed close to the oil-water contact
+    tvd_ft: 9500
+    pi_stbd_per_psi: 2.5
+    skin: 1
+    tubing_id_in: 2.441
+    wc_frac: 0.30
+    gor_scf_per_stb: 600
+
+  - name: W-5               # THE WEAK WELL: tight rock, small tubing; first to need artificial lift
+    tvd_ft: 8600
+    pi_stbd_per_psi: 0.6
+    skin: 3
+    tubing_id_in: 1.995
+    wc_frac: 0.10
+    gor_scf_per_stb: 600
+
+  - name: W-6               # THE GASSY WELL: shallowest, at the crest of the structure
+    tvd_ft: 8000
+    pi_stbd_per_psi: 2.0
+    skin: 0
+    tubing_id_in: 2.441
+    wc_frac: 0.00
+    gor_scf_per_stb: 1200   # ASSUMPTION: a small local gas cap at the crest. Not consistent
+                            # with a fully undersaturated reservoir. Revisit in Module 1/4.
+
+  - name: W-7               # THE SAND WELL: best rock in the field, but weakly cemented.
+    tvd_ft: 8900            # It could produce a lot, but high drawdown pulls sand,
+    pi_stbd_per_psi: 3.0    # so its rate will be held below a sand-free limit (Module 3).
+    skin: 0                 # No gravel pack yet. Module 3 compares choke-back vs gravel pack
+    tubing_id_in: 2.441     # (a gravel pack adds skin, typically several units).
+    wc_frac: 0.05
+    gor_scf_per_stb: 600
+
+facility:
+  p_sep_psig: 150                 # HP separator, as read on the gauge (plan)
+  export_line_length_ft: 32808    # 10 km (plan) = 10,000 m / 0.3048
